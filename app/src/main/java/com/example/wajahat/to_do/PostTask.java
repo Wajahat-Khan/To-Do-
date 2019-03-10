@@ -42,9 +42,11 @@ public class PostTask extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
                 m=m+1;
-                String date= m + " /" + d + " /" + y;
+                String date= m + "/" + d + "/" + y;
                 date_t.setText(date);
             }
         };
+
+
     }
 }
