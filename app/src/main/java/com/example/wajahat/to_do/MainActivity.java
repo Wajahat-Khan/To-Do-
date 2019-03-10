@@ -5,9 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.LoginFilter;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView user;
+    private Button post_task;
+    private Button my_task;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseAuth=FirebaseAuth.getInstance();
         user=findViewById(R.id.user);
+        post_task=findViewById(R.id.post_task);
+        my_task=findViewById(R.id.my_tasks);
         authStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -57,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+        post_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getBaseContext(),PostTask.class);
+                intent.putExtra("Username",username);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -87,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onSignedInInitialize(String name){
         username=name;
-        user.setText("Welcome "  + username);
+        user.setText(username);
         // other working
     }
     private void onSignedOutInitialize(){
