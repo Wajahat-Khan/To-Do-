@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "581383075675",
+    "firebase_url": "https://to-do-2d0a9.firebaseio.com",
+    "project_id": "to-do-2d0a9",
+    "storage_bucket": "to-do-2d0a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581383075675:android:aa7b1ecaac0ff292",
+        "android_client_info": {
+          "package_name": "com.example.wajahat.to_do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581383075675-cipd7i2peco82epl2cqb7gsd61nc2063.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuCzitZ4ppmVxN3llgV-2C5_SHQGatF6Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
