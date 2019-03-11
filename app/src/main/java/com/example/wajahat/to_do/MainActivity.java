@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private static final int RC_SIGN_IN = 123;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private DatabaseReference child;
 
 
     private TextView user;
@@ -41,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
         user=findViewById(R.id.user);
         post_task=findViewById(R.id.post_task);
         my_task=findViewById(R.id.my_tasks);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("Users");
+        child=FirebaseDatabase.getInstance().getReference().child("Users");
+
         authStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user=firebaseAuth.getCurrentUser();
                 if(user!=null){
                     // User signed in
+                    databaseReference.child(user.getDisplayName()).setValue(user.getEmail());
                     onSignedInInitialize(user.getDisplayName());
                 }
                 else {
