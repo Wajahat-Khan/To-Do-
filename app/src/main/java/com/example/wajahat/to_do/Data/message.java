@@ -9,7 +9,9 @@ public class message {
     private String task;
     private String deadline;
 
+    public message(){
 
+    }
     public message(String from, String to, String task, String deadline){
         this.from=from;
         this.to=to;
