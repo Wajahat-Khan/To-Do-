@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.wajahat.to_do.Adapters.myTasksAdapter;
 import com.example.wajahat.to_do.Data.message;
@@ -55,7 +57,15 @@ public class MyTasks extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-        adapter= new myTasksAdapter(this);
+        adapter= new myTasksAdapter(this, new myTasksAdapter.MyAdapterListener() {
+            @Override
+            public void onClick(View view, int position, List<message> items) {
+                databaseReference.child(Integer.toString(mg.get(position).getId())).removeValue();
+                mg.remove(position);
+                adapter.setItems(mg);
+                Toast.makeText(MyTasks.this, "Task Completed", Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

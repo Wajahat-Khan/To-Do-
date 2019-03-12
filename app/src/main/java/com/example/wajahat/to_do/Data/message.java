@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class message {
 
+    private  int id;
     private String from;
     private String to;
     private String task;
@@ -12,12 +13,22 @@ public class message {
     public message(){
 
     }
-    public message(String from, String to, String task, String deadline){
+    public message(int id, String from, String to, String task, String deadline){
+        this.id=id;
         this.from=from;
         this.to=to;
         this.task=task;
         this.deadline=deadline;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFrom() {
         return from;
     }

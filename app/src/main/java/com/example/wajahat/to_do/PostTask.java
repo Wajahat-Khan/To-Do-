@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class PostTask extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class PostTask extends AppCompatActivity {
     private EditText task;
     private TextView deadline;
     private String user;
+    private int id = 1;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -79,8 +81,9 @@ public class PostTask extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message msg=new message(user,to.getText().toString(),task.getText().toString(),deadline.getText().toString());
-                databaseReference.push().setValue(msg);
+                int random = new Random().nextInt(100000) + 1;
+                message msg=new message(random, user,to.getText().toString(),task.getText().toString(),deadline.getText().toString());
+                databaseReference.child(Integer.toString(random)).setValue(msg);
             }
         });
 

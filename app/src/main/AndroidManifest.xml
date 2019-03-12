@@ -18,6 +18,6 @@
         </activity>
         <activity android:name=".PostTask"/>
         <activity android:name=".MyTasks"/>
-    </application>
+            </application>
 
 </manifest>
