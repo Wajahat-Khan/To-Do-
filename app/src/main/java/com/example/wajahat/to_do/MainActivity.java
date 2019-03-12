@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.LoginFilter;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,15 +16,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG ="qwe" ;
     private String username=null;
 
     private FirebaseAuth firebaseAuth;
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView user;
     private Button post_task;
     private Button my_task;
-
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
