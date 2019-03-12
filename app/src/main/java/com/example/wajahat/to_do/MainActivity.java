@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG ="qwe" ;
     private String username=null;
 
     private FirebaseAuth firebaseAuth;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView user;
     private Button post_task;
     private Button my_task;
-
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,25 +56,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Users");
         child=FirebaseDatabase.getInstance().getReference().child("Users");
-
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    private static final String TAG = "qaz" ;
-
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
-                            return;
-                        }
-
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-
-                        // Log and toast
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         authStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
