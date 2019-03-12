@@ -135,6 +135,8 @@ public class PostTask extends AppCompatActivity implements AdapterView.OnItemSel
                 int random = new Random().nextInt(100000) + 1;
                 message msg=new message(random, user,hd.getText().toString(),task.getText().toString(),deadline.getText().toString());
                 databaseReference.child(Integer.toString(random)).setValue(msg);
+                Toast.makeText(PostTask.this, "Task Created", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
