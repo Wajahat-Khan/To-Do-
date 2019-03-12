@@ -87,9 +87,11 @@ public class PostTask extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 temp = (String) dataSnapshot.getKey();
-                dataAdapter.add(temp);
-                dataAdapter.notifyDataSetChanged();
-                    }
+                if (!temp.equals(user)) {
+                    dataAdapter.add(temp);
+                    dataAdapter.notifyDataSetChanged();
+                }
+            }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
             }
