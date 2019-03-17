@@ -9,16 +9,25 @@ public class message {
     private String to;
     private String task;
     private String deadline;
-
+    private String status;
     public message(){
 
     }
-    public message(int id, String from, String to, String task, String deadline){
+    public message(int id, String from, String to, String task, String deadline, String status){
         this.id=id;
         this.from=from;
         this.to=to;
         this.task=task;
         this.deadline=deadline;
+        this.status=status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {

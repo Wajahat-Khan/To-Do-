@@ -23,7 +23,11 @@
         </activity>
         <activity android:name=".PostTask"/>
         <activity android:name=".MyTasks"/>
-            </application>
+        <activity android:name=".MyTasksAssigned"/>
+        <activity android:name=".PostGroup"/>
+        <activity android:name=".SearchTask"/>
+
+    </application>
 
 
 </manifest>
